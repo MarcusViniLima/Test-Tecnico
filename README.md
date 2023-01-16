@@ -1,4 +1,4 @@
-# Test-Tecnico
+# Teste-Tecnico
 ## Sobre o desafio
 Usando Spring boot, crie uma API simples para gerenciar Pessoas.
 ## Tecnologias, Stacks e Ferramentas
