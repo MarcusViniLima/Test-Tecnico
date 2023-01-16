@@ -1,0 +1,1 @@
+java -jar target/teste-tecnico-0.0.1-SNAPSHOT.jar
