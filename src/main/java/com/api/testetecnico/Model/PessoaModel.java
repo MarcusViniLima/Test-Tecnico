@@ -1,10 +1,15 @@
 package com.api.testetecnico.Model;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -13,13 +18,15 @@ import jakarta.persistence.Table;
 @Table(name = "Pessoatb")
 public class PessoaModel {
     @Id
-    @Column(name = "id_Pessoa",  length = 5)
+    @Column(name = "id_Pessoa", nullable = false, length = 5)
     private Integer idPessoa;
     @Column(name = "nome_Pessoa", nullable = false, length = 100)
     private String nomePessoa;
-    @Column(name = "dataNasc_Pessoa", length = 20)
-    private Integer dataNascPessoa;
-    @OneToMany
+    @Column(name = "dataNasc_Pessoa", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "GMT")
+    private LocalDate dataNascPessoa;
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIncludeProperties("idEndereco")
     private List<EnderecoModel> endereco;
     
     public Integer getIdPessoa() {
@@ -28,7 +35,7 @@ public class PessoaModel {
     public String getNomePessoa() {
         return nomePessoa;
     }
-    public int getDataNascPessoa() {
+    public LocalDate getDataNascPessoa() {
         return dataNascPessoa;
     }
     public void setIdPessoa(Integer id) {
@@ -37,7 +44,7 @@ public class PessoaModel {
     public void setNomePessoa(String nomePessoa) {
         this.nomePessoa = nomePessoa;
     }
-    public void setDataNascPessoa(int dataNascPessoa) {
+    public void setDataNascPessoa(LocalDate dataNascPessoa) {
         this.dataNascPessoa = dataNascPessoa;
     }
     public List<EnderecoModel> getEndereco() {

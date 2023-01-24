@@ -21,7 +21,7 @@ import com.api.testetecnico.Service.PessoaServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping
+@RequestMapping(path="/tecnicoPessoa")
 public class PessoaController {
     
     @Autowired
