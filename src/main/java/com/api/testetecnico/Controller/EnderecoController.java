@@ -59,7 +59,7 @@ public class EnderecoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(enderecoNovo.getPessoa());
     }
 
-    @GetMapping("/endereco/{id}")
+    @GetMapping("/endereco/{idPessoa}")
     public ResponseEntity<Object> listarEnderecoPessoa(@PathVariable Integer idPessoa){
         Optional pessoaOptional = pessoaService.buscarPeloid(idPessoa);
         if(!pessoaOptional.isPresent()){

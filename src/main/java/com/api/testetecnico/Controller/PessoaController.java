@@ -1,6 +1,9 @@
 package com.api.testetecnico.Controller;
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,6 +62,5 @@ public class PessoaController {
         ((PessoaModel) pessoa).setEndereco(pessoaAtualizada.getEndereco());
         return ResponseEntity.status(HttpStatus.OK).body(pessoaService.adicionarPessoa(pessoaAtualizada));
     }
-
 
 }

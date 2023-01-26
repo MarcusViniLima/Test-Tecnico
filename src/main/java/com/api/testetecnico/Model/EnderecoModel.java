@@ -5,6 +5,8 @@ package com.api.testetecnico.Model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -14,8 +16,9 @@ import jakarta.persistence.Table;
 @Table(name = "Enderecotb")
 public class EnderecoModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_Endereco", length = 4, nullable = false)
-    private String idEndereco;
+    private Integer idEndereco;
     @Column(name = "logradouro_Endereco",length = 100, nullable = false)
     private  String logradouroEndereco;
     @Column(name = "cep_Endereco",length = 8, nullable = false)
@@ -36,7 +39,7 @@ public class EnderecoModel {
     public String getCidadeEndereco() {
         return cidadeEndereco;
     }
-    public String getIdEndereco() {
+    public Integer getIdEndereco() {
         return idEndereco;
     }
     public String getLogradouroEndereco() {
@@ -48,7 +51,7 @@ public class EnderecoModel {
     public PessoaModel getPessoa() {
         return pessoa;
     }
-    public void setIdEndereco(String idEndereco) {
+    public void setIdEndereco(Integer idEndereco) {
         this.idEndereco = idEndereco;
     }
     public void setCepEndereco(int cepEndereco) {

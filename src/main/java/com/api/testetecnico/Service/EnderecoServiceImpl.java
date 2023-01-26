@@ -29,7 +29,7 @@ public class EnderecoServiceImpl implements IEnderecoService{
         return null;
     }
 
-    private boolean existById(String idEndereco) {
+    private boolean existById(Integer integer) {
         return false;
     }
 
@@ -45,7 +45,7 @@ public class EnderecoServiceImpl implements IEnderecoService{
         return null;
     }
 
-    public Optional buscarPeloidEndereco(String idEndereco) {
+    public Optional buscarPeloidEndereco(Integer idEndereco) {
         return enderecoRepository.findById(idEndereco);
     }
     

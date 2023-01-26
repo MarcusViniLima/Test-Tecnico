@@ -20,17 +20,10 @@ public class PessoaServiceImpl implements IPessoaService{
     @Override
     @Transactional
     public PessoaModel adicionarPessoa(PessoaModel pessoaNovo) {
-        if(this.existById(pessoaNovo.getIdPessoa())){
-            return null;
-        }
-        if( pessoaNovo.getIdPessoa() != null){
+        if( pessoaNovo.getNomePessoa() != null){
             return pessoaRepository.save(pessoaNovo);
         }
         return null;
-    }
-
-    private boolean existById(Integer integer) {
-        return false;
     }
 
     @Override
