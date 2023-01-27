@@ -1,9 +1,6 @@
 package com.api.testetecnico.Controller;
 
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.testetecnico.Model.PessoaModel;
 import com.api.testetecnico.Service.PessoaServiceImpl;
 
+import jakarta.validation.Valid;
+
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping(path="/tecnicoPessoa")
@@ -31,7 +30,7 @@ public class PessoaController {
     PessoaServiceImpl pessoaService;
 
     @PostMapping("/pessoa")
-    public ResponseEntity<PessoaModel> adicionarPessoa(@RequestBody PessoaModel pessoaNova){
+    public ResponseEntity<PessoaModel> adicionarPessoa(@Valid @RequestBody PessoaModel pessoaNova){
         return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.adicionarPessoa(pessoaNova));
     }
 
@@ -50,7 +49,7 @@ public class PessoaController {
     }
 
     @PutMapping("/pessoa/{id}")
-    public ResponseEntity<Object> alterarPessoa(@PathVariable Integer id, @RequestBody PessoaModel pessoaAtualizada){
+    public ResponseEntity<Object> alterarPessoa(@PathVariable Integer id, @Valid @RequestBody PessoaModel pessoaAtualizada){
         Optional pessoaOptional = pessoaService.buscarPeloid(id);
         if(!pessoaOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não foi possível atualizar dados! Verifique-os e tente novamente.");

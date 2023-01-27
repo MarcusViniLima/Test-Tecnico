@@ -15,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "Pessoatb")
@@ -25,6 +26,7 @@ public class PessoaModel {
     @Column(name = "id_Pessoa", nullable = false, length = 5)
     private Integer idPessoa;
     @Column(name = "nome_Pessoa", nullable = false, length = 100)
+    @NotBlank(message = "O nome da pessoa é obrigatório")
     private String nomePessoa;
     @Column(name = "dataNasc_Pessoa", nullable = false)
     @JsonFormat(pattern = "dd/MM/yyy")
